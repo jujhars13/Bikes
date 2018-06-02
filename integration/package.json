@@ -1,0 +1,18 @@
+{
+  "name": "integration",
+  "version": "1.0.0",
+  "description": "Basic integration tests for bikes app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samuel Barker <spbarker1994@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chromedriver": "^2.38.3",
+    "mocha": "^5.2.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
+}
