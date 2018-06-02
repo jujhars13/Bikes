@@ -13,14 +13,14 @@ services:
     container_name: selenium-hub
     ports:
       - "4444:4444"
-  integration:
-    image: node
-    depends_on:
-      - selenium-hub
-    volumes:
-      - ./integration:/app/src
-    environment:
-      - DOCKER_MACHINE_IP=192.168.99.100
+  # integration:
+  #   image: node
+  #   depends_on:
+  #     - selenium-hub
+  #   volumes:
+  #     - ./integration:/app/src
+  #   environment:
+  #     - DOCKER_MACHINE_IP=192.168.99.100
   chrome:
     image: selenium/node-chrome
     depends_on:
@@ -29,6 +29,8 @@ services:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
       - HUB_HOST=selenium-hub
+    expose:
+      - "5555"
     volumes:
       - /dev/shm:/dev/shm # Mitigates the Chromium issue described at https://code.google.com/p/chromium/issues/detail?id=519952
     # firefox:

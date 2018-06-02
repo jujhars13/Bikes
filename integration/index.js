@@ -7,7 +7,7 @@ const pageUrl = `http://${DOCKER_MACHINE_IP}:80`
 async function example () {
   const driver = await new Builder()
     .usingServer(hubUrl)
-    .forBrowser('firefox')
+    .forBrowser('chrome')
     .build()
   try {
     await driver.get(pageUrl)
