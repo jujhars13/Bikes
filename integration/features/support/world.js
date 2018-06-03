@@ -1,6 +1,7 @@
 const { Builder } = require('selenium-webdriver')
 const { setWorldConstructor, setDefaultTimeout } = require('cucumber')
 const DOCKER_MACHINE_IP = process.env.DOCKER_MACHINE_IP
+const { expect } = require('chai')
 
 class CustomWorld {
   constructor (callback) {
