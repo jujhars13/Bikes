@@ -4,15 +4,17 @@
   "description": "Basic integration tests for bikes app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "DOCKER_MACHINE_IP=192.168.99.100 ./node_modules/.bin/cucumber-js"
   },
   "author": "Samuel Barker <spbarker1994@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "chai": "^4.1.2",
-    "chai-as-promised": "^7.1.1",
     "chromedriver": "^2.38.3",
-    "mocha": "^5.2.0",
+    "cucumber": "^4.2.1",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "request-promise-native": "^1.0.5",
     "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }
