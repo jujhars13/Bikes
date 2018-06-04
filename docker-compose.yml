@@ -14,14 +14,15 @@ services:
     container_name: selenium-hub
     ports:
       - "4444:4444"
-  # integration:
-  #   image: node
-  #   depends_on:
-  #     - selenium-hub
-  #   volumes:
-  #     - ./integration:/app/src
-  #   environment:
-  #     - DOCKER_MACHINE_IP=192.168.99.100
+  cucumber:
+    image: cucumber
+    volumes:
+      - ./integration:/app/src
+    environment:
+      - DOCKER_MACHINE_IP=192.168.99.100
+    depends_on:
+      - selenium-hub
+      - chrome
   chrome:
     image: selenium/node-chrome
     depends_on:

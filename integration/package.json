@@ -4,7 +4,7 @@
   "description": "Basic integration tests for bikes app",
   "main": "index.js",
   "scripts": {
-    "test": "DOCKER_MACHINE_IP=192.168.99.100 ./node_modules/.bin/cucumber-js"
+    "test": "./node_modules/.bin/cucumber-js"
   },
   "author": "Samuel Barker <spbarker1994@gmail.com>",
   "license": "ISC",
