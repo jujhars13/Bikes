@@ -32,6 +32,7 @@ To view the selenium hub grid console go to http://DOCKER_MACHINE_IP:4444/grid/c
 - Add a html/web application report at the end of tests
 - Add multiple browsers
 - Run integration tests in parallel to increase speed
+- Swap out es6 for TypeScript?
 
 ============================================
 
