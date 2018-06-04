@@ -1,4 +1,40 @@
-# Bikes Tester Exercise
+# Bikes Tester Exercise - Solution by Samuel Barker
+For the original contents of the readme please read below
+
+## About
+This project is a solution to the challenge mentioned below. I have wrapped an already existing AngularJS site in `docker-compose` and served with `nginx`.
+
+For integration tests I have added a `Selenium hub` with `Chrome` nodes. Selenium integration tests will be run against these nodes, which are also scalable.
+
+Finally, I have built a customer docker image for `cucumber` tests, which runs against the hub nodes.
+
+The integrations tests are written with es6 `javascript`, utilising promises with es6 `async` and `await`.
+
+## Get going
+1. `make build` - builds the cucumber image
+2. `make setup` - installs the necessary dependencies for the tests
+3. `make start` - starts the dockerised applications, and runs the integrations tests automatically
+
+## Scaling up nodes
+To scale the application to more nodes, simply edit the `Makefile`'s `start` command to include more nodes:
+```
+docker-compose up --scale chrome=NUMBER_OF_NODES
+```
+
+## Console
+To view the selenium hub grid console go to http://DOCKER_MACHINE_IP:4444/grid/console
+
+## (Future) Improvments/Features to implement
+- Complete integration tests
+- Make cucumber container run indefinitely, so that the application does not need to be restarted to run tests
+- Add makefile task to run tests
+- Add snapshots/video on test failure
+- Add a html/web application report at the end of tests
+- Add multiple browsers
+- Run integration tests in parallel to increase speed
+- Swap out es6 for TypeScript?
+
+============================================
 
 ![on my mf bike](app/favicon.png)
 

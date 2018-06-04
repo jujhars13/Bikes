@@ -1,0 +1,20 @@
+{
+  "name": "integration",
+  "version": "1.0.0",
+  "description": "Basic integration tests for bikes app",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber-js"
+  },
+  "author": "Samuel Barker <spbarker1994@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chromedriver": "^2.38.3",
+    "cucumber": "^4.2.1",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "request-promise-native": "^1.0.5",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
+}
