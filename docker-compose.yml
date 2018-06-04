@@ -35,11 +35,3 @@ services:
       - "5555"
     volumes:
       - /dev/shm:/dev/shm # Mitigates the Chromium issue described at https://code.google.com/p/chromium/issues/detail?id=519952
-    # firefox:
-  #   image: selenium/node-firefox
-  #   depends_on:
-  #     - selenium-hub
-  #   environment:
-  #     - HUB_PORT_4444_TCP_ADDR=selenium-hub
-  #     - HUB_PORT_4444_TCP_PORT=4444
-  #     - HUB_HOST=selenium-hub
