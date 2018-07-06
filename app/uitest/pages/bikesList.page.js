@@ -1,5 +1,6 @@
 var XMLHttpRequest = require("../utils/XMLHttpRequest").XMLHttpRequest;
 var FilterSideBar = require("../uiObject/custom/filterSideBar.element");
+var ArrayUtils = require('../utils/array.utils');
 
 class BikesPage {
   constructor() {
@@ -26,6 +27,28 @@ class BikesPage {
   };
 
   /*
+  * Returns promise with filters shown on ui
+  *
+  * @returns {promice({name, checkbox}[])}
+  */
+  getFilters() {
+    return this.filterSideBar.getFilters();
+  };
+
+  /*
+  * Set filters by names array
+  * 
+  * @param {string[]} class array
+  */
+  setFilters(classArray){
+    this.filterSideBar.getFilters().then(() =>{
+      classArray.forEach(className => {
+        this.filterSideBar.setFilterByName(className)
+      });
+    });
+  }
+
+  /*
   * Returns promise with bikes from json data
   *
   * @returns {promice({name, img, description, class}[])}
@@ -36,6 +59,32 @@ class BikesPage {
     Httpreq.send(null);
     return JSON.parse(Httpreq.responseText);
   };
+
+  /*
+  * Returns promise with TRUE if correct bikes are shown according to selected filters
+  * or FALSE 
+  *
+  * @param {{name, img, description, class}} test bike object
+  * @param {jsonArray} bikes json Array
+  * 
+  * @returns {promice(boolean)}
+  */
+  isCorrectBikesAreShown(testBike, bikesJson){
+    return this.getBikes().then((bikes) => {
+      var isCorrect = true;
+      bikesJson.items.forEach(bike => {
+        if(ArrayUtils.arrayContainsArray(bike.class, testBike.class)){
+          var expectedBike = bikes.find(x => {
+            if(x.name == bike.name){
+              return x.name == bike.name
+            }
+          });
+          isCorrect = !isCorrect ? isCorrect : expectedBike != undefined;
+        }
+      });
+      return isCorrect;
+    });
+  }
 
   /*
   * Converts string with classes from ui to strings array
