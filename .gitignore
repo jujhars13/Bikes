@@ -28,10 +28,10 @@ tags
 .history
 
 ### NPM ###
-./app/node_modules
+.app/node_modules
 
 ### tmp ###
-./app/tmp
+.app/tmp
 
 # End of https://www.gitignore.io/api/vim,intellij,visualstudiocode
 
