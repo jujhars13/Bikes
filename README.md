@@ -2,6 +2,25 @@
 
 ![on my mf bike](app/favicon.png)
 
+## UI Tests
+
+To run UI test do the followinf steps:
+
+1. Install [Node JS](https://nodejs.org/en/)
+2. Install Protractor using command
+```bash
+npm install -g protractor
+```
+3. Install and Start webdriver manager
+```bash
+webdriver-manager update
+webdriver-manager start
+```
+4. Run tests using protractor command from `/app` directory, where `application_url` is url to served application
+```bash
+protractor uitest/conf.js --baseUrl="http://{application_url}"
+```
+
 ## Your Challenge
 
 We need you to create an integration test suite to test that the application herein functions correctly and renders according to the user stories.
