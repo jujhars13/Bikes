@@ -18,7 +18,7 @@ class Checkbox extends BaseElement {
   /*
   * Set checkbox state
   * 
-  * @param {boolean} state
+  * @value {boolean} state to set
   */
   set(value){
     return this.element.isSelected().then(selected => {

@@ -18,13 +18,24 @@ class FilterSideBar extends BaseElement {
   };
 
   /*
-  * Set filters by name
+  * Select filter by name
   * 
-  * @param {string} class name
+  * @name{string} class name
   */
-  setFilterByName(name){
+  selectFilterByName(name){
     this.getFilters().then(() =>{
       expect(() => this.filters.find(x => x.name.toLowerCase() == name.toLowerCase()).checkbox.select()).not.toThrow();
+    });
+  }
+
+  /*
+  * Deselect filter by name
+  * 
+  * @name {string} class name
+  */
+  deselectFilterByName(name){
+    this.getFilters().then(() =>{
+      expect(() => this.filters.find(x => x.name.toLowerCase() == name.toLowerCase()).checkbox.deselect()).not.toThrow();
     });
   }
 
@@ -32,7 +43,7 @@ class FilterSideBar extends BaseElement {
   * Returns promise with TRUE if filter is selected
   * or FALSE 
   * 
-  * @param {string} class name
+  * @name {string} class name
   * 
   * @returns {promice(boolean)}
   */

@@ -4,8 +4,19 @@
 
 ## UI Tests
 
-To run UI test do the following steps:
+My assumptions:
+1. Since developer alredy used jasmine It would be great to use same framework.
+2. The best test framework for Angular framework is Protractor 
+3. The application was created using javascript, so I would like to use same language
 
+Steps:
+1. Run application 
+2. Review and update control IDs and classes to create better locators
+3. Setup frameworks
+4. Create tests, page objects and elements
+5. Add reporting
+
+To run UI test do the following steps:
 1. Install [Node JS](https://nodejs.org/en/)
 2. Install Protractor using command
 ```bash

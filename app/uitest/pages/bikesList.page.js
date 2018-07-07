@@ -1,4 +1,4 @@
-var XMLHttpRequest = require("../utils/XMLHttpRequest").XMLHttpRequest;
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var FilterSideBar = require("../uiObject/custom/filterSideBar.element");
 var ArrayUtils = require('../utils/array.utils');
 
@@ -43,7 +43,7 @@ class BikesPage {
   setFilters(classArray){
     this.filterSideBar.getFilters().then(() =>{
       classArray.forEach(className => {
-        this.filterSideBar.setFilterByName(className)
+        this.filterSideBar.selectFilterByName(className)
       });
     });
   }
@@ -55,7 +55,7 @@ class BikesPage {
   */
   getResourceJson() {
     var Httpreq = new XMLHttpRequest();
-    Httpreq.open("GET", "http://localhost:8080/app/bikes.json", false);
+    Httpreq.open("GET", browser.baseUrl + "/bikes.json", false);
     Httpreq.send(null);
     return JSON.parse(Httpreq.responseText);
   };
@@ -64,21 +64,21 @@ class BikesPage {
   * Returns promise with TRUE if correct bikes are shown according to selected filters
   * or FALSE 
   *
-  * @param {{name, img, description, class}} test bike object
+  * @selectedFilters {string[]} string array with filters
   * @param {jsonArray} bikes json Array
   * 
   * @returns {promice(boolean)}
   */
-  isCorrectBikesAreShown(testBike, bikesJson){
+  isCorrectBikesAreShown(selectedFilters, bikesJson){
     return this.getBikes().then((bikes) => {
       var isCorrect = true;
       bikesJson.items.forEach(bike => {
-        if(ArrayUtils.arrayContainsArray(bike.class, testBike.class)){
-          var expectedBike = bikes.find(x => {
-            if(x.name == bike.name){
-              return x.name == bike.name
-            }
-          });
+        if(ArrayUtils.arrayContainsArray(bike.class, selectedFilters)){
+          var expectedBike = bikes.find(x => x.name == bike.name);
+          if(!expectedBike){
+            console.log(selectedFilters)
+            console.log(bike.name)
+          }
           isCorrect = !isCorrect ? isCorrect : expectedBike != undefined;
         }
       });
