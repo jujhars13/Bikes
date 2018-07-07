@@ -28,9 +28,9 @@ describe('prodList Controller', function () {
         ]
     };
 
-    var mockFiltersClassComfort = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true}];
-    var mockFiltersClassComfort18GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"gears","value":"21","state":false},{"key":"gears","value":"18","state":true}];
-    var mockFiltersClassComfort21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
+    var mockFiltersClassComfort = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"class","value":"gravel","state":false}];
+    var mockFiltersClassComfort18GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"class","value":"gravel","state":false},{"key":"gears","value":"21","state":false},{"key":"gears","value":"18","state":true}];
+    var mockFiltersClassComfort21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"class","value":"gravel","state":false},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
     var mockFiltersClassGravel21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":false},{"key":"class","value":"gravel","state":true},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
 
     beforeEach(module('bikeStore'));
