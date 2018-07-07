@@ -20,17 +20,22 @@ describe('Bikes Smoke Test Suite', function() {
             return x.name == bike.name
           }
         });
-        expect(expectedBike).toBeDefined();
+        expect(expectedBike).toBeDefined(`Bike with name ${bike.name} is not displayed`);
 
         //if was found check all other info
         if(expectedBike != null){
           bike.class = bike.class.map(x => x.charAt(0).toUpperCase().concat(x.slice(1).toLowerCase()));
-          expect(expectedBike.description).toEqual(bike.description)
-          expect(expectedBike.class).toEqual(bike.class)
-          expect(expectedBike.img).toEqual(bike.image.thumb)
+          expect(expectedBike.description).toEqual(bike.description, "Bike description is wrong!")
+          expect(expectedBike.class).toEqual(bike.class, "Bike class is wrong!")
+          expect(expectedBike.img).toEqual(bike.image.thumb, "Bike image url is wrong!")
         }
       });
     });
+  });
+
+  it('As a user I would like to see filters for all classes', function() {
+    //check all filters are shown
+    BikesListPage.isEveryClassHasFilter(jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true, "Not correct filters are displayed"));
   });
 
   it('And I would like to be able to sort the bikes into a custom order based on class', function() {
@@ -46,7 +51,7 @@ describe('Bikes Smoke Test Suite', function() {
     BikesListPage.setFilters(selectedFilters);
 
     //check correct bikes are shown
-    BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true));
+    BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true, "Not correct bikes are shown"));
   });
 
   it('And I would like my custom order to be saved and not change when I refresh the page', function() {
@@ -57,15 +62,15 @@ describe('Bikes Smoke Test Suite', function() {
     BikesListPage.filterSideBar.getFilters().then((filters) =>{
       filters.forEach(filter => {
         if(selectedFilters.includes(filter.name)){
-          BikesListPage.filterSideBar.isFilterSelected(filter.name).then((isSelected) => expect(isSelected).toBe(true))
+          BikesListPage.filterSideBar.isFilterSelected(filter.name).then((isSelected) => expect(isSelected).toBe(true, `Filter ${filter.name} is not selected`))
         }else{
-          BikesListPage.filterSideBar.isFilterSelected(filter.name).then((isSelected) => expect(isSelected).toBe(false))
+          BikesListPage.filterSideBar.isFilterSelected(filter.name).then((isSelected) => expect(isSelected).toBe(false, `Filter ${filter.name} is selected`))
         }
       });
     });
 
     //check correct bikes are shown
-    BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true));
+    BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true, "Not correct bikes are shown"));
   });
 
   it('And I would like to deselect some filter', function() {
@@ -76,7 +81,7 @@ describe('Bikes Smoke Test Suite', function() {
     selectedFilters.shift();
 
     //check correct bikes are shown
-    BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true));
+    BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true, "Not correct bikes are shown"));
   });
 
   it('And I would like my custom order to be saved and not change when I refresh the page after deselect filter', function() {
@@ -87,14 +92,14 @@ describe('Bikes Smoke Test Suite', function() {
     BikesListPage.filterSideBar.getFilters().then((filters) =>{
       filters.forEach(filter => {
         if(selectedFilters.includes(filter.name)){
-          BikesListPage.filterSideBar.isFilterSelected(filter.name).then((isSelected) => expect(isSelected).toBe(true))
+          BikesListPage.filterSideBar.isFilterSelected(filter.name).then((isSelected) => expect(isSelected).toBe(true, `Filter ${filter.name} is not selected`))
         }else{
-          BikesListPage.filterSideBar.isFilterSelected(filter.name).then((isSelected) => expect(isSelected).toBe(false))
+          BikesListPage.filterSideBar.isFilterSelected(filter.name).then((isSelected) => expect(isSelected).toBe(false, `Filter ${filter.name} is selected`))
         }
       });
     });
 
     //check correct bikes are shown
-    BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true));
+    BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true, "Not correct bikes are shown"));
   });
 });

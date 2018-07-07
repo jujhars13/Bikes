@@ -75,15 +75,32 @@ class BikesPage {
       bikesJson.items.forEach(bike => {
         if(ArrayUtils.arrayContainsArray(bike.class, selectedFilters)){
           var expectedBike = bikes.find(x => x.name == bike.name);
-          if(!expectedBike){
-            console.log(selectedFilters)
-            console.log(bike.name)
-          }
           isCorrect = !isCorrect ? isCorrect : expectedBike != undefined;
         }
       });
       return isCorrect;
     });
+  }
+
+  /*
+  * Returns promise with TRUE if all expected filters are displayed
+  * or FALSE 
+  *
+  * @param {jsonArray} bikes json Array
+  * 
+  * @returns {promice(boolean)}
+  */
+  isEveryClassHasFilter(jsonBikes){
+    var classes = [];
+    var isCorrect = true;
+    jsonBikes.items.forEach(bike => classes = ArrayUtils.concatUnique(classes, bike.class));
+    return this.getFilters().then((filters) => {
+      classes.forEach((className) => {
+        var expectedFilter = filters.find(filter => filter.name.toLowerCase() == className.toLowerCase());
+        isCorrect = !isCorrect ? isCorrect : expectedFilter != undefined;
+      })
+      return isCorrect;
+    })
   }
 
   /*

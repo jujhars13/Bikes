@@ -14,7 +14,19 @@ class ArrayUtils {
     return subset.every((value) => {
       return (superset.indexOf(value) >= 0);
     });
- }
+  }
+
+  /*
+  * Returns merged array
+  *
+  * @superset {array} superset
+  * @subset {array} subset
+  *
+  * @returns {array}
+  */
+  concatUnique(superset, subset){
+    return superset.concat(subset.filter((item) => superset.indexOf(item) < 0));
+  }
 }
 
 module.exports = new ArrayUtils();
