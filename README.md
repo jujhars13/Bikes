@@ -5,9 +5,9 @@
 ## UI Tests
 
 My assumptions:
-1. Since developer alredy used jasmine It would be great to use same framework.
+1. Since developer already used jasmine It would be great to use the same framework.
 2. The best test framework for Angular framework is Protractor 
-3. The application was created using javascript, so I would like to use same language
+3. The application was created using javascript, so I would like to use the same language
 
 Steps:
 1. Run application 
@@ -28,7 +28,7 @@ npm install -g protractor
 webdriver-manager update
 webdriver-manager start
 ```
-5. Load npm dependencies from `/app` directory (allows to create report)
+5. Load npm dependencies from `/app` directory
 ```bash
 npm install
 ```
