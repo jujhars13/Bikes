@@ -33,7 +33,7 @@ describe('Bikes Smoke Test Suite', function() {
     });
   });
 
-  it('As a user I would like to see filters for all classes', function() {
+  it('And I would like to see filters for all classes', function() {
     //check all filters are shown
     BikesListPage.isEveryClassHasFilter(jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true, "Not correct filters are displayed"));
   });
