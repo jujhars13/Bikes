@@ -73,7 +73,7 @@ describe('Bikes Smoke Test Suite', function() {
     BikesListPage.isCorrectBikesAreShown(selectedFilters, jsonBikes).then((isCorrect) => expect(isCorrect).toBe(true, "Not correct bikes are shown"));
   });
 
-  it('And I would like to deselect some filter', function() {
+  it('And I would like to be able to deselect some filter', function() {
     //deselect first selected filter
     BikesListPage.filterSideBar.deselectFilterByName(selectedFilters[0])
 

@@ -48,6 +48,16 @@ By default it will run test within Chrome and Firefox browsers.
 You can find report in `/app/tmp/report`.
 If you need to change browser settings (`conf.js`), please check out [Protractor](https://www.protractortest.org) documentation.
 
+Result E2E test case is:
+```bash
+As a user I would like to see a list/grid of bikes based on json document
+And I would like to see filters for all classes
+And I would like to be able to sort the bikes into a custom order based on class
+And I would like my custom order to be saved and not change when I refresh the page
+And I would like to be able to deselect some filter
+And I would like my custom order to be saved and not change when I refresh the page after deselect filter
+```
+
 ## Your Challenge
 
 We need you to create an integration test suite to test that the application herein functions correctly and renders according to the user stories.
