@@ -28,7 +28,9 @@ exports.config = {
     jasmine.getEnv().addReporter(new HtmlReporter({
       baseDirectory: 'tmp/report',
       takeScreenShotsOnlyForFailedSpecs: true, 
-      screenshotsSubfolder: 'images'
+      screenshotsSubfolder: 'images', 
+      jsonsSubfolder: 'jsons',
+      preserveDirectory: false
    }).getJasmine2Reporter());
   },
 

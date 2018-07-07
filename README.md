@@ -17,23 +17,31 @@ Steps:
 5. Add reporting
 
 To run UI test do the following steps:
-1. Install [Node JS](https://nodejs.org/en/)
-2. Install Protractor using command
+1. Make sure you have installed Firefox and Chrome browsers 
+2. Install [Node JS](https://nodejs.org/en/)
+3. Install Protractor using command
 ```bash
 npm install -g protractor
 ```
-3. Install and Start webdriver manager
+4. Install and Start webdriver manager
 ```bash
 webdriver-manager update
 webdriver-manager start
 ```
-4. Load npm dependencies from `/app` directory (allows to create report)
+5. Load npm dependencies from `/app` directory (allows to create report)
 ```bash
 npm install
 ```
-5. Run tests using protractor command from `/app` directory, where `{application_url}` is url to served application
+6. Run tests using protractor command from `/app` directory, where `{application_url}` is url to served application
 ```bash
+#chrome and firefox
 protractor uitest/conf.js --baseUrl="http://{application_url}"
+
+#chrome only
+protractor uitest/conf.js --baseUrl="http://{application_url}" --verbose --browser=chrome --multiCapabilities
+
+#firefox only
+protractor uitest/conf.js --baseUrl="http://{application_url}" --verbose --browser=firefox --multiCapabilities
 ```
 
 By default it will run test within Chrome and Firefox browsers.
