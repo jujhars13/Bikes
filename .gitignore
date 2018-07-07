@@ -27,6 +27,10 @@ tags
 !.vscode/extensions.json
 .history
 
+### NPM ###
+app/node_modules
+
+### tmp ###
+app/tmp
 
 # End of https://www.gitignore.io/api/vim,intellij,visualstudiocode
-

@@ -20,12 +20,18 @@ describe('prodList Controller', function () {
                 "class": ["comfort", "endurance", "race"],
                 "gears": ["18"]
             },
+            {
+                "id": 4,
+                "class": ["gravel"],
+                "gears": ["21"]
+            },
         ]
     };
 
-    var mockFiltersClassComfort = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true}];
-    var mockFiltersClassComfort18GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"gears","value":"21","state":false},{"key":"gears","value":"18","state":true}];
-    var mockFiltersClassComfort21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
+    var mockFiltersClassComfort = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"class","value":"gravel","state":false}];
+    var mockFiltersClassComfort18GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"class","value":"gravel","state":false},{"key":"gears","value":"21","state":false},{"key":"gears","value":"18","state":true}];
+    var mockFiltersClassComfort21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"class","value":"gravel","state":false},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
+    var mockFiltersClassGravel21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":false},{"key":"class","value":"gravel","state":true},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
 
     beforeEach(module('bikeStore'));
 
@@ -85,7 +91,7 @@ describe('prodList Controller', function () {
         var dataFilters = $rootScope.getDataFilters(mockBikeJSON.items, ["class", "gears"]);
 
         expect(dataFilters).not.toBeUndefined();
-        expect(dataFilters.length).toEqual(5);
+        expect(dataFilters.length).toEqual(6);
 
     });
 
@@ -163,6 +169,19 @@ describe('prodList Controller', function () {
 
         // call filtered products with mock data
         var filteredProducts = $rootScope.filterProducts(mockBikeJSON.items, mockFiltersClassComfort18GearsTrue)
+
+        // we are execting no results
+        expect(filteredProducts.length).toEqual(1);
+		
+    });
+    
+    it('when we filter by "class: gravel" and "gears: 21" we get one result', function () {
+
+		var controller = createController();
+		$httpBackend.flush();
+
+        // call filtered products with mock data
+        var filteredProducts = $rootScope.filterProducts(mockBikeJSON.items, mockFiltersClassGravel21GearsTrue)
 
         // we are execting no results
         expect(filteredProducts.length).toEqual(1);

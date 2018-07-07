@@ -3,7 +3,7 @@
     var app = angular.module('bikeStore', []);
 
     //var datasource = '//raw.githubusercontent.com/jujhars13/test-testers/master/bikes.json'; // external JSON datasource 
-    var datasource = '/bikes.json'; // external JSON datasource 
+    var datasource = 'bikes.json'; // external JSON datasource 
     var keyPrefixForStorage = "pl.fi."; // prefixed to all filter keys we store in session storage
 
     app.controller('prodList', ['$scope', '$http', function ($scope, $http) {

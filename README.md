@@ -2,6 +2,62 @@
 
 ![on my mf bike](app/favicon.png)
 
+## UI Tests
+
+My assumptions:
+1. Since developer already used jasmine It would be great to use the same framework.
+2. The best test framework for Angular framework is Protractor 
+3. The application was created using javascript, so I would like to use the same language
+
+Steps:
+1. Run application 
+2. Review and update control IDs and classes to create better locators
+3. Setup frameworks
+4. Create tests, page objects and elements
+5. Add reporting
+
+To run UI test do the following steps:
+1. Make sure you have installed Firefox and Chrome browsers 
+2. Install [Node JS](https://nodejs.org/en/)
+3. Install Protractor using command
+```bash
+npm install -g protractor
+```
+4. Install and Start webdriver manager
+```bash
+webdriver-manager update
+webdriver-manager start
+```
+5. Load npm dependencies from `/app` directory
+```bash
+npm install
+```
+6. Run tests using protractor command from `/app` directory, where `{application_url}` is url to served application
+```bash
+#chrome and firefox
+protractor uitest/conf.js --baseUrl="http://{application_url}"
+
+#chrome only
+protractor uitest/conf.js --baseUrl="http://{application_url}" --verbose --browser=chrome --multiCapabilities
+
+#firefox only
+protractor uitest/conf.js --baseUrl="http://{application_url}" --verbose --browser=firefox --multiCapabilities
+```
+
+By default it will run test within Chrome and Firefox browsers.
+You can find report in `/app/tmp/report`.
+If you need to change browser settings (`conf.js`), please check out [Protractor](https://www.protractortest.org) documentation.
+
+Result E2E test case is:
+```bash
+As a user I would like to see a list/grid of bikes based on json document
+And I would like to see filters for all classes
+And I would like to be able to sort the bikes into a custom order based on class
+And I would like my custom order to be saved and not change when I refresh the page
+And I would like to be able to deselect some filter
+And I would like my custom order to be saved and not change when I refresh the page after deselect filter
+```
+
 ## Your Challenge
 
 We need you to create an integration test suite to test that the application herein functions correctly and renders according to the user stories.
